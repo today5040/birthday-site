@@ -5,6 +5,7 @@ const typingEl = document.getElementById("typing");
 const replayBtn = document.getElementById("replayBtn");
 const surpriseBtn = document.getElementById("surpriseBtn");
 const lineSwitcher = document.getElementById("lineSwitcher");
+const durationClock = document.getElementById("durationClock");
 
 let timer = null;
 
@@ -42,6 +43,33 @@ function playLines() {
 
 playLines();
 setInterval(playLines, 3600);
+
+const metDate = new Date(2011, 11, 20, 0, 0, 0);
+
+function pad(num) {
+  return String(num).padStart(2, "0");
+}
+
+function updateDurationClock() {
+  if (!durationClock) return;
+  const now = new Date();
+  const diffMs = now.getTime() - metDate.getTime();
+  if (diffMs < 0) {
+    durationClock.textContent = "0 天 00 时 00 分 00 秒";
+    return;
+  }
+
+  const totalSeconds = Math.floor(diffMs / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  durationClock.textContent = `${days} 天 ${pad(hours)} 时 ${pad(minutes)} 分 ${pad(seconds)} 秒`;
+}
+
+updateDurationClock();
+setInterval(updateDurationClock, 1000);
 
 const canvas = document.getElementById("hearts");
 const ctx = canvas?.getContext("2d");

@@ -166,6 +166,24 @@ h1 {
   line-height: 1.75;
 }
 
+.timer-card {
+  text-align: center;
+}
+
+.duration-clock {
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 3.2vw, 2rem);
+  color: #ffe7b6;
+  letter-spacing: 0.04em;
+}
+
+.timer-meta {
+  margin-top: 8px;
+  color: #f9d6e9;
+  font-size: 0.95rem;
+}
+
 .line-switcher {
   margin: 0;
   font-size: 1.2rem;
@@ -298,6 +316,15 @@ ul {
   .card li {
     line-height: 1.68;
     font-size: 0.96rem;
+  }
+
+  .duration-clock {
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+
+  .timer-meta {
+    font-size: 0.88rem;
   }
 
   .line-switcher {
